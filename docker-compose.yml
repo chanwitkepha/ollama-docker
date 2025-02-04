@@ -1,0 +1,35 @@
+# Ollama Docker alpine linux for small VM with CPU Only
+# https://hub.docker.com/r/alpine/ollama
+
+services:
+  ollama-docker:
+    image:  alpine/ollama:0.3.13
+    container_name: ollama-docker
+    environment:
+    - "TZ=Asia/Bangkok"
+    tty: true
+    volumes:
+    - ~/.ollama:/root/.ollama
+    ports:
+    - 11434:11434
+
+    networks:
+      ollama-docker:
+        ipv4_address: 10.1.254.2
+
+
+#  my-ubuntu-os-02:
+#    image: registry.gitlab.com/chanwit.kepha/my-ubuntu-os
+#    container_name: my-ubuntu-os-02
+#    tty: true
+#    networks:
+#      my-ubuntu-network:
+#        ipv4_address: 172.22.0.3
+
+networks:
+  ollama-docker:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 10.1.254.0/24
