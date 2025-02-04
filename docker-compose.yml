@@ -17,15 +17,6 @@ services:
       ollama-docker:
         ipv4_address: 10.1.254.2
 
-
-#  my-ubuntu-os-02:
-#    image: registry.gitlab.com/chanwit.kepha/my-ubuntu-os
-#    container_name: my-ubuntu-os-02
-#    tty: true
-#    networks:
-#      my-ubuntu-network:
-#        ipv4_address: 172.22.0.3
-
 networks:
   ollama-docker:
     driver: bridge
